@@ -8,39 +8,44 @@
     <link rel="stylesheet" href="/css/login.css">
   </head>
   <body class="fundo-pagina">
-    <div class="container">
-
-        <div class="row d-flex justify-content-center m-5">
-            <div class="titulo">
-                <h1>Login</h1>
+    <div class="container " style="width: 30%;">
+        <div class="card shadow-lg" style="background-color: #EEEEEE;">
+            <div class="card-header" style="background-color: #31363F;">
+                <div class="row d-flex justify-content-center m-2">
+                    <div class="titulo">
+                        <h1 style="color: white;">Login</h1>
+                    </div>
+                </div>
             </div>
-        </div>
+            
+            <div class="card-body">
+                <div class="row d-flex justify-content-center m-5">
+                    <div class="form-group">
+                        <input class="form-control rounded-pill" type="text" name="email" id="email_user" placeholder="Email" aria-describedby="helpId">
+                      </div>
+                </div>
         
-        <div class="row d-flex justify-content-center m-5">
-            <div class="form-group col-xl-auto">
-                <input type="text" name="email" id="email_user" class="form-control" placeholder="Email" aria-describedby="helpId">
-              </div>
-        </div>
-
-        <div class="row d-flex justify-content-center m-5">
-            <div class="form-group col-xl-auto">
-                <input type="password" name="pass" id="password" class="form-control" placeholder="Palavra-passe" aria-describedby="helpId">
+                <div class="row d-flex justify-content-center m-5">
+                    <div class="form-group col-xl-auto">
+                        <input class="form-control rounded-pill" type="password" name="pass" id="password" placeholder="Palavra-passe" aria-describedby="helpId">
+                    </div>
+                </div>
+        
+                <div class="d-flex justify-content-center mt-5">
+                    <button type="button" class="btn btn-lg rounded-pill" id="login">Login</button>
+                </div>
             </div>
-        </div>
 
-        <div class="row d-flex justify-content-center m-5">
-            <button type="button" class="btn btn-lg" id="login">Login</button>
-        </div>
+            <div class="row d-flex justify-content-center text-center mb-4">
+                <label id="suporte">Caso tenha algum problema em efetuar o login <span id="suporte_btn">contacnos</span>.</label>
+            </div>
 
-        <div class="row d-flex justify-content-center ">
-            <label id="suporte">Caso tenha algum problema em efetuar o login <span id="suporte_btn">contacnos</span>.</label>
         </div>
-
     </div>
 
-    <div class="div_imagem">
+    <!-- <div class="div_imagem">
         <img class="imagem" src="/imagens/troti.png" alt="logo">
-    </div>
+    </div> -->
     
       
     <!-- Optional JavaScript -->
