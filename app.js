@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 app.set('view engine', 'ejs');
 app.use(express.json());
+const { render } = require('ejs');
 
 
 app.get('/', (req, res) => {
@@ -9,7 +10,11 @@ app.get('/', (req, res) => {
 });
 
 app.get('/login', (req, res) => {
-    res.send('Olá, mundo!');
+    res.render("login");
+});
+
+app.get('/index', (req, res) => {
+    res.render("index");
 });
 
 

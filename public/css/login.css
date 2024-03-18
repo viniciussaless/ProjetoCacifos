@@ -1,6 +1,6 @@
 /* #EEEEEE*/
 .fundo-pagina {
-    background-image: url('/imagens/ests.png');
+    background-image: url('../imagens/ests.png');
     height: 100vh; /* Ajuste conforme necessário */
     background-size: cover;
     background-position: center;
