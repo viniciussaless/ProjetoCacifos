@@ -23,9 +23,8 @@
     width: 20vw;
 }
 
-#suporte{
-    width: 15vw;
-    font-size: larger;
+a{
+    text-decoration: underline;
 }
 
 #suporte_btn{
