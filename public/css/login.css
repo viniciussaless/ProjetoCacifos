@@ -15,18 +15,6 @@
     width: 10vw;
 }
 
-#email_user{
-    width: 20vw;
-}
-
-#password{
-    width: 20vw;
-}
-
-a{
-    text-decoration: underline;
-}
-
 #suporte_btn{
     color: blue;
     cursor: pointer;
@@ -35,16 +23,4 @@ a{
 #suporte_btn:active{
     color: red;
     cursor: pointer;
-}
-
-.div_imagem {
-    position: relative;
-    height: 100%;
-}
-
-.imagem {
-    width: 10vh;
-    position: absolute;
-    bottom: 1vw;
-    left: -7vw;
 }

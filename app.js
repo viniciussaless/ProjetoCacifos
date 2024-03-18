@@ -3,10 +3,11 @@ const app = express();
 app.set('view engine', 'ejs');
 app.use(express.json());
 const { render } = require('ejs');
+const { redirect } = require('express/lib/response');
 
 
 app.get('/', (req, res) => {
-  res.send('Olá, mundo!');
+  res.redirect('/login');
 });
 
 app.get('/login', (req, res) => {
