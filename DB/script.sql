@@ -25,11 +25,11 @@ INSERT INTO trotinetes (`idTrotinete`, estado_bateria) VALUES ('', '50%');
 INSERT INTO trotinetes (`idTrotinete`, estado_bateria) VALUES ('', '90%');
 
 
-INSERT INTO utilizadores (`IdUtilizador`, email_utilizador, nome_utilizador, estatuto_utilizador, idplano, data_adesao) VALUES ('', '202300703@estudantes.ips.pt', 'Vinicius', 'Admin', '9', '2024/03/14');
+INSERT INTO utilizadores (`IdUtilizador`, email_utilizador, nome_utilizador, estatuto_utilizador, idplano, data_adesao, password_utilizadores) VALUES ('', '202300703@estudantes.ips.pt', 'Vinicius', 'Admin', '9', '2024/03/14', '12345678');
 
-INSERT INTO utilizadores (`IdUtilizador`, email_utilizador, nome_utilizador, estatuto_utilizador, idplano, data_adesao) VALUES ('', '202301059@estudantes.ips.pt', 'André', 'Admin', '8', '2024/03/14');
+INSERT INTO utilizadores (`IdUtilizador`, email_utilizador, nome_utilizador, estatuto_utilizador, idplano, data_adesao, password_utilizadores) VALUES ('', '202301059@estudantes.ips.pt', 'André', 'Admin', '8', '2024/03/14', '12345678');
 
-INSERT INTO utilizadores (`IdUtilizador`, email_utilizador, nome_utilizador, estatuto_utilizador, idplano, data_adesao) VALUES ('', '202301062@estudantes.ips.pt', 'Tiago', 'Admin', '7', '2024/03/14');
+INSERT INTO utilizadores (`IdUtilizador`, email_utilizador, nome_utilizador, estatuto_utilizador, idplano, data_adesao, password_utilizadores) VALUES ('', '202301062@estudantes.ips.pt', 'Tiago', 'Admin', '7', '2024/03/14', '12345678');
 
-INSERT INTO utilizadores (`IdUtilizador`, email_utilizador, nome_utilizador, estatuto_utilizador, idplano, data_adesao) VALUES ('', '202300100@estudantes.ips.pt', 'Jose', 'Estudante', '9', '2024/03/14');
+INSERT INTO utilizadores (`IdUtilizador`, email_utilizador, nome_utilizador, estatuto_utilizador, idplano, data_adesao, password_utilizadores) VALUES ('', '202300100@estudantes.ips.pt', 'Jose', 'Estudante', '9', '2024/03/14', '12345678');
 

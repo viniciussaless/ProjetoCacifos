@@ -20,23 +20,21 @@
             </div>
             
             <div class="card-body">
-                <div class="row d-flex justify-content-center m-5">
-                    <div class="form-group">
-                        <input class="form-control rounded-pill" type="text" name="email" id="email_user" placeholder="Email" aria-describedby="helpId">
-                      </div>
-                </div>
-        
-                <div class="row d-flex justify-content-center m-5">
-                    <div class="form-group col-xl-auto">
-                        <input class="form-control rounded-pill" type="password" name="pass" id="password" placeholder="Palavra-passe" aria-describedby="helpId">
+                <form method="post" action="/login" autocomplete="on">
+                    <div class="row d-flex justify-content-center m-5">
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Email" >
+                          </div>
                     </div>
-                </div>
+                    <div class="row d-flex justify-content-center m-5">
+                        <div class="form-group col-xl-auto">
+                            <input type="password" name="password" placeholder="Palavra-passe" >
+                        </div>
+                    </div>
+                    
+                    <button id="enviar" type="submit" class="button">Entrar</button>
 
-                <a href="index.html">
-                    <div class="d-flex justify-content-center mt-5">
-                        <button type="button" class="btn btn-lg rounded-pill" id="login">Login</button>
-                    </div>
-                </a>
+                </form>
             </div>
 
             <div class="row d-flex justify-content-center text-center mb-4">
