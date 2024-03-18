@@ -14,7 +14,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-3">
-                <div class="card shadow-lg border-0" style="background-color: #EEEEEE; height: 50vh;">
+                <div class="card shadow-lg border-0" style="background-color: #EEEEEE; height: 65vh;">
                     <div class="card-header" style="background-color: #31363F;">
                         <div class="text-center">
                             <h1 style="color: white;">Login</h1>
@@ -24,24 +24,25 @@
                     <form method="post" action="/login" autocomplete="on">
                         <div class="card-body d-flex flex-column justify-content-center">
                             <div class="form-group">
-                                <input class="form-control rounded-pill mb-5" type="text" name="email" id="email_user"
+                                <input class="form-control rounded-pill my-4" type="text" name="email" id="email_user"
                                     placeholder="Email" aria-describedby="helpId">
                             </div>
 
                             <div class="form-group">
-                                <input class="form-control rounded-pill mb-4" type="password" name="pass" id="password"
-                                    placeholder="Palavra-passe" aria-describedby="helpId">
+                                <input class="form-control rounded-pill mb-4" type="password" name="password"
+                                    id="password" placeholder="Palavra-passe" aria-describedby="helpId">
                             </div>
 
-                            <div class="text-center">
-                                <button id="enviar" type="submit" class="btn btn-lg btn-md btn-primary rounded-pill w-50" id="login">Entrar</button>
+                            <div class="text-center mb-4">
+                                <button id="enviar" type="submit" class="btn btn-lg btn-md rounded-pill w-50" id="login"
+                                    style="background-color: #31363F; color: white;">Entrar</button>
                             </div>
-                            
+
                         </div>
                     </form>
+
                     <div class="text-center mb-4">
-                        <label class="d-block">Caso tenha algum problema em efetuar o login <a
-                                href="#">contacte-nos</a>.</label>
+                        <label class="d-block">Caso tenha algum problema em efetuar o login <a href="#">contacte-nos</a>.</label>
                     </div>
                 </div>
             </div>
