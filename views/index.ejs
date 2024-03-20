@@ -7,8 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="node_modules\bootstrap\dist\css\bootstrap.css">
   <link rel="stylesheet" href="../css/index.css">
 </head>
 
@@ -76,36 +75,81 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
 </body>
-<script>
-  const ctx = document.getElementById('myChart');
 
-  new Chart(ctx, {
-    type: 'line',
+
+
+<script>
+      const ctx = document.getElementById('myChart');
+    const data = [];
+    const data2 = [];
+    let prev = 100;
+    let prev2 = 80;
+    for (let i = 0; i < 1000; i++) {
+        prev += 5 - Math.random() * 10;
+    data.push({x: i, y: prev });
+    prev2 += 5 - Math.random() * 10;
+    data2.push({x: i, y: prev2 });
+  }
+
+    const totalDuration = 10000;
+    const delayBetweenPoints = totalDuration / data.length;
+  const previousY = (ctx) => ctx.index === 0 ? ctx.chart.scales.y.getPixelForValue(100) : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
+    const animation = {
+        x: {
+        type: 'number',
+    easing: 'linear',
+    duration: delayBetweenPoints,
+    from: NaN, // the point is initially skipped
+    delay(ctx) {
+        if (ctx.type !== 'data' || ctx.xStarted) {
+          return 0;
+        }
+    ctx.xStarted = true;
+    return ctx.index * delayBetweenPoints;
+      }
+    },
+    y: {
+        type: 'number',
+    easing: 'linear',
+    duration: delayBetweenPoints,
+    from: previousY,
+    delay(ctx) {
+        if (ctx.type !== 'data' || ctx.yStarted) {
+          return 0;
+        }
+    ctx.yStarted = true;
+    return ctx.index * delayBetweenPoints;
+      }
+    }
+  };
+
+    new Chart(ctx, {
+        type: 'line',
     data: {
-      datasets: [{
-        borderColor: Utils.CHART_COLORS.red,
-        borderWidth: 1,
-        radius: 0,
-        data: data,
+        datasets: [{
+        borderColor: 'red',
+    borderWidth: 1,
+    radius: 0,
+    data: data,
       },
-      {
-        borderColor: Utils.CHART_COLORS.blue,
-        borderWidth: 1,
-        radius: 0,
-        data: data2,
+    {
+        borderColor: 'blue',
+    borderWidth: 1,
+    radius: 0,
+    data: data2,
       }]
     },
     options: {
-      animation,
-      interaction: {
+        animation,
+        interaction: {
         intersect: false
       },
-      plugins: {
+    plugins: {
         legend: false
       },
-      scales: {
+    scales: {
         x: {
-          type: 'linear'
+        type: 'linear'
         }
       }
     }
