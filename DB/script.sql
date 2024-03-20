@@ -1,4 +1,5 @@
--- Active: 1702372197461@@127.0.0.1@3306@projetocacifo
+-- Active: 1710930151296@@127.0.0.1@3306@projetocacifo
+Active: 1702372197461@@127.0.0.1@3306@projetocacifo
 INSERT INTO cacifos (`idCacifo`, estado) VALUES ('', '0');
 INSERT INTO cacifos (`idCacifo`, estado) VALUES ('', '1');
 INSERT INTO cacifos (`idCacifo`, estado) VALUES ('', '2');

@@ -4,6 +4,10 @@ const connection = require('./models/db'); // Arquivo de conexão MySQL
 app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Servir arquivos estáticos do diretório node_modules
+app.use('/node_modules', express.static('node_modules'));
+
 const { render } = require('ejs');
 var idUtilizador;
 
@@ -20,10 +24,10 @@ app.get('/login', (req, res) => {
 
 app.get('/index', (req, res) => {
   if(idUtilizador == null){
-    res.redirect("/");
+     res.redirect("/");
   }
   else{
-    res.render("index");
+     res.render("index");
   }
 });
 
