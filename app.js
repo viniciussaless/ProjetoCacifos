@@ -23,12 +23,13 @@ app.get('/login', (req, res) => {
 
 
 app.get('/index', (req, res) => {
-  if(idUtilizador == null){
-     res.redirect("/");
-  }
-  else{
-     res.render("index");
-  }
+  // if(idUtilizador == null){
+  //    res.redirect("/");
+  // }
+  // else{
+  //    res.render("index");
+  // }
+  res.render("index");
 });
 
 app.post('/login', (req, res) => { //rota para pegar o email e password do login
