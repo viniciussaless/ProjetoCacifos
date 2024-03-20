@@ -49,6 +49,9 @@ app.post('/login', (req, res) => { //rota para pegar o email e password do login
         const dbPassword = results[0].password_utilizadores;
         res.redirect("/index"); // Corrigido o redirecionamento
       }
+      else {
+        res.render('login', { error: "Dados inválidos" }); // Renderiza a página de login com a mensagem de erro
+      }
     }
   });
 });
