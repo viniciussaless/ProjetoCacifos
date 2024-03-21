@@ -28,7 +28,7 @@ window.addEventListener('load', () => {
       duration: delayBetweenPoints,
       from: NaN, // the point is initially skipped
       delay(grafico_energia) {
-        if (grafico_energia.type !== 'data' || grafico_energia.xStarted) {
+        if (grafico_energia.type !== 'data' || grafico_energia .xStarted) {
           return 0;
         }
         grafico_energia.xStarted = true;
