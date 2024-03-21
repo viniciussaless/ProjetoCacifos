@@ -27,6 +27,42 @@ app.get('/index', (req, res) => {
    }
 });
 
+app.get('/cacifos', (req, res) => {
+  if(idUtilizador == null){
+      res.redirect("/");
+   }
+   else{
+      res.render("cacifos");
+   }
+});
+
+app.get('/permissoes', (req, res) => {
+  if(idUtilizador == null){
+      res.redirect("/");
+   }
+   else{
+      res.render("permissoes");
+   }
+});
+
+app.get('/utilizadores', (req, res) => {
+  if(idUtilizador == null){
+      res.redirect("/");
+   }
+   else{
+      res.render("utilizadores");
+   }
+});
+
+app.get('/estatisticas', (req, res) => {
+  if(idUtilizador == null){
+      res.redirect("/");
+   }
+   else{
+      res.render("estatisticas");
+   }
+});
+
 app.post('/login', (req, res) => { //rota para pegar o email e password do login
   const email = req.body.email;
   const password = req.body.password;
