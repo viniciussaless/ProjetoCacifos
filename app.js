@@ -12,15 +12,11 @@ const { render } = require('ejs');
 var idUtilizador;
 
 app.get('/', (req, res) => {
-
-  res.render('login');
-});
-
-app.get('/login', (req, res) => {
-
-  res.render('login');
-});
-
+  model = {
+    
+  }
+  res.render('login', model);
+})
 
 app.get('/index', (req, res) => {
   if(idUtilizador == null){
@@ -48,6 +44,13 @@ app.post('/login', (req, res) => { //rota para pegar o email e password do login
         const dbEmail = results[0].email_utilizador;
         const dbPassword = results[0].password_utilizadores;
         res.redirect("/index"); // Corrigido o redirecionamento
+      }
+      else {
+        model = {
+          message : "Dados Inválidos!"
+        }
+        
+        res.render('login', model);
       }
     }
   });
