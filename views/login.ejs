@@ -45,6 +45,9 @@
                             <div class="form-group">
                                 <input class="form-control rounded-pill mb-3" type="password" name="password" id="password"
                                     placeholder="Palavra-passe" aria-describedby="helpId">
+                                    <button type="button" id="showpassword">
+                                        <i class='bx bx-show' id="check"></i>
+                                    </button>
                             </div>
     
                             <div class="text-center">
@@ -80,10 +83,15 @@
     </script>
 
     <script>
-        var btn =  document.getElementById("btn");
+        const campoSenha = document.getElementById('password');
+        const botaoMostrarSenha = document.getElementById('showpassword');
 
-        btn.addEventListener("click", function() {
-            btn.style.display = "block";
+        botaoMostrarSenha.addEventListener('click', function() {
+        if (campoSenha.type === 'password') {
+            campoSenha.type = 'text';
+        } else {
+            campoSenha.type = 'password';
+        }
         });
     </script>
     
