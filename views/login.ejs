@@ -8,10 +8,12 @@
     <link rel="stylesheet" href="node_modules\bootstrap\dist\css\bootstrap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="../css/login.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <<<<<<< HEAD=======<link rel="stylesheet" href="../css/login.css">
+        >>>>>>> b125e20158e993f9926ff64cedba61bacfa79450
+        <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <link rel="stylesheet" href="../css/login.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="fundo-pagina">
@@ -32,8 +34,15 @@
                             </div>
 
                             <div class="form-group">
-                                <input class="form-control rounded-pill mb-3" type="password" name="password"
-                                    id="password" placeholder="Palavra-passe" aria-describedby="helpId">
+                                <<<<<<< HEAD <input class="form-control rounded-pill mb-3" type="password"
+                                    name="password" id="password" placeholder="Palavra-passe" aria-describedby="helpId">
+                                    =======
+                                    <input class="form-control rounded-pill mb-3" type="password" name="password"
+                                        id="password" placeholder="Palavra-passe" aria-describedby="helpId">
+                                    <button type="button" id="showpassword">
+                                        <i class='bx bx-show' id="check"></i>
+                                    </button>
+                                    >>>>>>> b125e20158e993f9926ff64cedba61bacfa79450
                             </div>
 
                             <div class="text-center">
@@ -64,17 +73,29 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
         </script>
+
+    <script>
+        const campoSenha = document.getElementById('password');
+        const botaoMostrarSenha = document.getElementById('showpassword');
+
+        botaoMostrarSenha.addEventListener('click', function () {
+            if (campoSenha.type === 'password') {
+                campoSenha.type = 'text';
+            } else {
+                campoSenha.type = 'password';
+            }
+        });
+
+        setTimeout(function teste() {
+            Swal.fire({
+                position: 'center',
+                icon: "error",
+                title: "Oops...",
+                text: "Something went wrong!",
+            });
+        }, 100)
+    </script>
+
 </body>
 
 </html>
-
-<script>
-    setTimeout(function teste() {
-        Swal.fire({
-            position: 'center',
-            icon: "error",
-            title: "Oops...",
-            text: "Something went wrong!",
-        });
-    }, 100)
-</script>
