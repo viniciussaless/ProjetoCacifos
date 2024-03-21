@@ -11,14 +11,14 @@ window.addEventListener('load', () => {
   const data2 = [];
   let prev = 100;
   let prev2 = 80;
-  for (let i = 0; i < 1000; i++) {
+  for (let i = 0; i < 25; i++) {
     prev += 5 - Math.random() * 10;
     data.push({ x: i, y: prev });
     prev2 += 5 - Math.random() * 10;
     data2.push({ x: i, y: prev2 });
   }
 
-  const totalDuration = 10000;
+  const totalDuration = 5000;
   const delayBetweenPoints = totalDuration / data.length;
   const previousY = (grafico_energia) => grafico_energia.index === 0 ? grafico_energia.chart.scales.y.getPixelForValue(100) : grafico_energia.chart.getDatasetMeta(grafico_energia.datasetIndex).data[grafico_energia.index - 1].getProps(['y'], true).y;
   const animation = {
