@@ -40,7 +40,7 @@
                                 </div>
                     </div>
 
-                    <form method="post" action="/login" autocomplete="on">
+                    <form method="post" action="/login" autocomplete="on" id="form_login">
                         <div class="card-body d-flex flex-column justify-content-center">
                             <div class="form-group">
                                 <input class="form-control rounded-pill mb-3" type="text" name="email" id="email_user"
@@ -96,8 +96,31 @@
             }
         });
 
+    document.getElementById('form_login').addEventListener('submit', function (Event) {
+        Event.preventDefault();
 
+        const email_user = document.getElementById('email_user').value;
+        const password = document.getElementById('password').value;
 
+        fetch('/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: email_user,
+                password: password
+            })
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+
+        });
 
     </script>
 
