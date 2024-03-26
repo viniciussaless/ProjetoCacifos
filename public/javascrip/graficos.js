@@ -47,11 +47,21 @@ window.addEventListener('load', () => {
           scaleLabel: {
             display: true,
             labelString: 'Energia'
+          },
+          ticks: {
+            display: false, // Ocultar os valores do eixo Y
+            // Definindo os rótulos do eixo Y
+            callback: function(value, index, values) {
+              if (value === 100) return 'CACIFO1';
+              else if (value === 80) return 'CACIFO2';
+              else if (value === 60) return 'CACIFO3';
+              else return ''; // Deixe vazio se não quiser mostrar rótulos para outros valores
+            }
           }
         }]
       }
     }
-  }); 
+  });
 
 
   //Segundo grafico
