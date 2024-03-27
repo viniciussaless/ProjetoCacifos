@@ -3,7 +3,6 @@ const script = document.createElement('script');
 script.src = 'node_modules/chart.js/dist/chart.umd.js';
 script.async = false; // Garante que o script seja carregado de forma síncrona
 document.head.appendChild(script);
-
 // Primeiro gráfico
 window.addEventListener('load', () => {
   const grafico_energia = document.getElementById('grafico_energia');
@@ -23,7 +22,7 @@ window.addEventListener('load', () => {
     data: {
       labels: data.map(item => item.x), // Usar os rótulos das horas
       datasets: [{
-        label: 'Energia 1',
+        label: 'energia',
         data: data,
         borderColor: 'red',
         backgroundColor: 'rgba(255, 0, 0, 0.2)'
@@ -48,16 +47,6 @@ window.addEventListener('load', () => {
             display: true,
             labelString: 'Energia'
           },
-          ticks: {
-            display: false, // Ocultar os valores do eixo Y
-            // Definindo os rótulos do eixo Y
-            callback: function(value, index, values) {
-              if (value === 100) return 'CACIFO1';
-              else if (value === 80) return 'CACIFO2';
-              else if (value === 60) return 'CACIFO3';
-              else return ''; // Deixe vazio se não quiser mostrar rótulos para outros valores
-            }
-          }
         }]
       }
     }

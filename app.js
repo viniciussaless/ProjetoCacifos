@@ -23,7 +23,13 @@ app.get('/index', (req, res) => {
       res.redirect("/");
    }
    else{
-      res.render("index");
+    connection.query('SELECT nome_utilizador FROM utilizadores where IdUtilizador = ?', [idUtilizador] , (error, results, fields) => { 
+      if (error) {
+        console.error('Erro ao realizar a consulta:', error);
+        return;
+      }
+      res.render('index', { dados: results });
+    });
    }
 });
 
@@ -66,9 +72,7 @@ app.get('/estatisticas', (req, res) => {
 app.post('/login', (req, res) => { //rota para pegar o email e password do login
   const email = req.body.email;
   const password = req.body.password;
-  // console.log(email);
-  // console.log(password);
-  connection.query("SELECT IdUtilizador, email_utilizador, password_utilizadores FROM utilizadores WHERE email_utilizador = ? AND password_utilizadores = ?", [email, password], function (err, results, fields) {
+  connection.query("SELECT IdUtilizador, email_utilizador, nome_utilizador,password_utilizadores FROM utilizadores WHERE email_utilizador = ? AND password_utilizadores = ?", [email, password], function (err, results, fields) {
     if (err) {
       console.log(err);
       res.status(500).send("Erro na consulta");
