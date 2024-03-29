@@ -140,8 +140,8 @@
       const data2 = [];
       for (let i = 0; i <= 24; i++) {
         const hora = i < 10 ? '0' + i + ':00' : i + ':00';
-        let prev = 10 + (5 - Math.random() * 10); // Valor inicial com um desvio aleatório
-        let prev2 = 50 + (5 - Math.random() * 10); // Valor inicial com um desvio aleatório
+        let prev = 0; // Valor inicial com um desvio aleatório
+        let prev2 = 50; // Valor inicial com um desvio aleatório
 
         data.push({ x: hora, y: prev });
         data2.push({ x: hora, y: prev2 });
@@ -158,7 +158,7 @@
             backgroundColor: 'rgba(255, 0, 0, 0.2)'
           },
           {
-            label: 'Energia 2',
+            label: 'Cacifo2',
             data: data2,
             borderColor: 'blue',
             backgroundColor: 'rgba(0, 0, 255, 0.2)'
