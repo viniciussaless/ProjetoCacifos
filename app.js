@@ -18,20 +18,24 @@ app.get('/', (req, res) => {
   res.render('login', model);
 })
 
-app.get('/index', (req, res) => {
-  if(idUtilizador == null){
-      res.redirect("/");
-   }
-   else{
-    connection.query('SELECT nome_utilizador FROM utilizadores where IdUtilizador = ?', [idUtilizador] , (error, results, fields) => { 
+app.get('/dados-grafico', (req, res) => {
+  if (idUtilizador == null) {
+    res.redirect("/");
+  } else {
+    connection.query('SELECT Energia FROM cacifos', (error, results, fields) => {
       if (error) {
-        console.error('Erro ao realizar a consulta:', error);
+        console.error('Erro ao consultar o banco de dados:', error);
+        res.status(500).send('Erro ao consultar o banco de dados');
         return;
       }
-      res.render('index', { dados: results });
+      // Mapeia os resultados para obter apenas os valores de Energia
+      const valoresEnergia = results.map(result => result.Energia);
+      res.json(valoresEnergia);
+      // console.log(valoresEnergia);
     });
-   }
+  }
 });
+
 
 app.get('/cacifos', (req, res) => {
   if(idUtilizador == null){
@@ -39,6 +43,15 @@ app.get('/cacifos', (req, res) => {
    }
    else{
       res.render("cacifos");
+   }
+});
+
+app.get('/index', (req, res) => {
+  if(idUtilizador == null){
+      res.redirect("/");
+   }
+   else{
+      res.render("index");
    }
 });
 
