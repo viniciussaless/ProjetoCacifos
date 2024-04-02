@@ -20,12 +20,12 @@ USE `projetocacifo` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `projetocacifo`.`Utilizadores` (
   `IdUtilizador` INT NOT NULL AUTO_INCREMENT,
-  `num_utilizador` INT NOT NULL,
   `email_utilizador` VARCHAR(255) NOT NULL,
   `nome_utilizador` VARCHAR(255) NOT NULL,
   `estatuto_utilizador` VARCHAR(60) NOT NULL,
   `idplano` VARCHAR(45) NOT NULL,
   `data_adesao` VARCHAR(45) NOT NULL,
+  `password_utilizadores` VARCHAR(60) NOT NULL,
   PRIMARY KEY (`IdUtilizador`))
 ENGINE = InnoDB;
 
@@ -56,8 +56,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `projetocacifo`.`Cacifos` (
   `idCacifo` INT NOT NULL AUTO_INCREMENT,
-  `nome_cacifo` VARCHAR(45) NULL,
   `estado` INT NULL,
+  `Energia` INT(11) NULL,
   PRIMARY KEY (`idCacifo`))
 ENGINE = InnoDB;
 
@@ -70,6 +70,15 @@ CREATE TABLE IF NOT EXISTS `projetocacifo`.`Trotinetes` (
   `estado_bateria` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idTrotinete`))
 ENGINE = InnoDB;
+
+CREATE TABLE `projetocacifo`.`estatisticas` (
+  `idEstatisticas` INT NOT NULL,
+  `Energiatotal` INT NOT NULL,
+  `Lucrototal` INT NOT NULL,
+  `Prejuizo` INT NOT NULL,
+  `Mes` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idEstatisticas`));
+
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

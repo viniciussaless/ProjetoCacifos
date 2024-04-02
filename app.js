@@ -32,10 +32,17 @@ app.post('/index', (req, res) => {
       // Mapeia os resultados para obter apenas os valores de Energia
       const valoresEnergia = results.map(result => result.Energia);
       res.json(valoresEnergia);
-      console.log(valoresEnergia);  
     });
   }
 });
+
+app.get('/index', (req, res) =>{
+  if(idUtilizador == null){
+    res.redirect("/");
+  }else[
+    connection.query
+  ]
+})
 
 
 app.get('/cacifos', (req, res) => {
