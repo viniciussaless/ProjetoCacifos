@@ -3,81 +3,51 @@ const script = document.createElement('script');
 script.src = 'node_modules/chart.js/dist/chart.umd.js';
 script.async = false; // Garante que o script seja carregado de forma síncrona
 document.head.appendChild(script);
-
-// Primeiro grafico
+// Primeiro gráfico
 window.addEventListener('load', () => {
   const grafico_energia = document.getElementById('grafico_energia');
   const data = [];
   const data2 = [];
-  let prev = 100;
-  let prev2 = 80;
-  for (let i = 0; i < 25; i++) {
-    prev += 5 - Math.random() * 10;
-    data.push({ x: i, y: prev });
-    prev2 += 5 - Math.random() * 10;
-    data2.push({ x: i, y: prev2 });
+  for (let i = 0; i <= 24; i++) {
+    const hora = i < 10 ? '0' + i + ':00' : i + ':00';
+    let prev = 100 + (5 - Math.random() * 10); // Valor inicial com um desvio aleatório
+    let prev2 = 80 + (5 - Math.random() * 10); // Valor inicial com um desvio aleatório
+  
+    data.push({ x: hora, y: prev });
+    data2.push({ x: hora, y: prev2 });
   }
-
-  const totalDuration = 5000;
-  const delayBetweenPoints = totalDuration / data.length;
-  const previousY = (grafico_energia) => grafico_energia.index === 0 ? grafico_energia.chart.scales.y.getPixelForValue(100) : grafico_energia.chart.getDatasetMeta(grafico_energia.datasetIndex).data[grafico_energia.index - 1].getProps(['y'], true).y;
-  const animation = {
-    x: {
-      type: 'number',
-      easing: 'linear',
-      duration: delayBetweenPoints,
-      from: NaN, // the point is initially skipped
-      delay(grafico_energia) {
-        if (grafico_energia.type !== 'data' || grafico_energia .xStarted) {
-          return 0;
-        }
-        grafico_energia.xStarted = true;
-        return grafico_energia.index * delayBetweenPoints;
-      }
-    },
-    y: {
-      type: 'number',
-      easing: 'linear',
-      duration: delayBetweenPoints,
-      from: previousY,
-      delay(grafico_energia) {
-        if (grafico_energia.type !== 'data' || grafico_energia.yStarted) {
-          return 0;
-        }
-        grafico_energia.yStarted = true;
-        return grafico_energia.index * delayBetweenPoints;
-      }
-    }
-  };
 
   new Chart(grafico_energia, {
     type: 'line',
     data: {
+      labels: data.map(item => item.x), // Usar os rótulos das horas
       datasets: [{
-        borderColor: 'red',
-        borderWidth: 1,
-        radius: 0,
+        label: 'energia',
         data: data,
+        borderColor: 'red',
+        backgroundColor: 'rgba(255, 0, 0, 0.2)'
       },
       {
-        borderColor: 'blue',
-        borderWidth: 1,
-        radius: 0,
+        label: 'Energia 2',
         data: data2,
+        borderColor: 'blue',
+        backgroundColor: 'rgba(0, 0, 255, 0.2)'
       }]
     },
     options: {
-      animation,
-      interaction: {
-        intersect: false
-      },
-      plugins: {
-        legend: false
-      },
       scales: {
-        x: {
-          type: 'linear'
-        }
+        xAxes: [{
+          scaleLabel: {
+            display: true,
+            labelString: 'Horas'
+          }
+        }],
+        yAxes: [{
+          scaleLabel: {
+            display: true,
+            labelString: 'Energia'
+          },
+        }]
       }
     }
   });

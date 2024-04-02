@@ -18,14 +18,24 @@ app.get('/', (req, res) => {
   res.render('login', model);
 })
 
-app.get('/index', (req, res) => {
-  if(idUtilizador == null){
-      res.redirect("/");
-   }
-   else{
-      res.render("index");
-   }
+app.get('/dados-grafico', (req, res) => {
+  if (idUtilizador == null) {
+    res.redirect("/");
+  } else {
+    connection.query('SELECT Energia FROM cacifos', (error, results, fields) => {
+      if (error) {
+        console.error('Erro ao consultar o banco de dados:', error);
+        res.status(500).send('Erro ao consultar o banco de dados');
+        return;
+      }
+      // Mapeia os resultados para obter apenas os valores de Energia
+      const valoresEnergia = results.map(result => result.Energia);
+      res.json(valoresEnergia);
+      // console.log(valoresEnergia);
+    });
+  }
 });
+
 
 app.get('/cacifos', (req, res) => {
   if(idUtilizador == null){
@@ -33,6 +43,15 @@ app.get('/cacifos', (req, res) => {
    }
    else{
       res.render("cacifos");
+   }
+});
+
+app.get('/index', (req, res) => {
+  if(idUtilizador == null){
+      res.redirect("/");
+   }
+   else{
+      res.render("index");
    }
 });
 
@@ -66,9 +85,7 @@ app.get('/estatisticas', (req, res) => {
 app.post('/login', (req, res) => { //rota para pegar o email e password do login
   const email = req.body.email;
   const password = req.body.password;
-  // console.log(email);
-  // console.log(password);
-  connection.query("SELECT IdUtilizador, email_utilizador, password_utilizadores FROM utilizadores WHERE email_utilizador = ? AND password_utilizadores = ?", [email, password], function (err, results, fields) {
+  connection.query("SELECT IdUtilizador, email_utilizador, nome_utilizador,password_utilizadores FROM utilizadores WHERE email_utilizador = ? AND password_utilizadores = ?", [email, password], function (err, results, fields) {
     if (err) {
       console.log(err);
       res.status(500).send("Erro na consulta");

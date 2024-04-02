@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-  <link rel="stylesheet" href="node_modules\bootstrap\dist\css\bootstrap.css">
-  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="../public/css/index.css">
 
 </head>
 
@@ -115,9 +115,8 @@
 
   </div>
 
-
   <!-- TODO JS NECESSÁRIO -->
-  <script src="node_modules\chart.js\dist\chart.umd.js"></script>
+  <script src="../node_modules/chart.js/dist/chart.umd.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
@@ -130,22 +129,8 @@
   <script>
     const ctx = document.getElementById('grafico_energia');
 
-  // Função para obter os valores da base de dados via AJAX
-function obterValoresDaBaseDeDados() {
-  return fetch('/dados-grafico') // Endpoint para obter os valores da base de dados
-    .then(res => res.json())
-    .then(data => data.valores)
-    .catch(error => {
-      console.error('Erro ao obter valores da base de dados:', error);
-      return [];
-    });
-}
-
-// Quando os valores da base de dados são obtidos, cria o gráfico
-obterValoresDaBaseDeDados()
-  .then(valores => {
-    let labelsX = ["Cacifo1", "Cacifo2", "Cacifo3"];
-    
+    let labelsX = ["Cacifo1", "Cacifo2", "Cacifo3"]
+    let valores = [20, 20, 30, 50]
     new Chart(ctx, {
       type: 'bar',
       data: {
@@ -164,9 +149,6 @@ obterValoresDaBaseDeDados()
         }
       }
     });
-  });
-
-
     // // Incluir o Chart.js
     // const script = document.createElement('script');
     // script.src = 'node_modules/chart.js/dist/chart.umd.js';
