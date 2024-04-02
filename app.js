@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
   res.render('login', model);
 })
 
-app.get('/dados-grafico', (req, res) => {
+app.post('/index', (req, res) => {
   if (idUtilizador == null) {
     res.redirect("/");
   } else {
@@ -32,6 +32,7 @@ app.get('/dados-grafico', (req, res) => {
       // Mapeia os resultados para obter apenas os valores de Energia
       const valoresEnergia = results.map(result => result.Energia);
       res.json(valoresEnergia);
+      console.log(valoresEnergia);  
     });
   }
 });

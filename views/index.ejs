@@ -128,32 +128,47 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
   <script>
-    const ctx = document.getElementById('grafico_energia');
+   const ctx = document.getElementById('grafico_energia');
+   let dados;
 
-  // Função para obter os valores da base de dados via AJAX
-    function obterValoresDaBaseDeDados() {
-    return fetch('/dados-grafico') // Endpoint para obter os valores da base de dados
+let valoresArmazenados; // Variável para armazenar os valores obtidos da base de dados
+
+function obterValoresDaBaseDeDados() {
+  return new Promise((resolve, reject) => {
+    fetch('/index', {
+      method: 'POST', // Definindo o método como POST
+      headers: {
+        'Content-Type': 'application/json' // Especificando o tipo de conteúdo como JSON
+      },
+      body: JSON.stringify({}) // Se necessário, adicione os dados que deseja enviar no corpo da requisição
+    })
       .then(res => res.json())
-      .then(data => data.valores)
+      .then(data => {
+        // Armazena os valores obtidos na variável valoresArmazenados
+        valoresArmazenados = data.valores;
+        console.log(data);
+        dados = data;
+        resolve(valoresArmazenados); // Resolvendo a promise com os valores obtidos
+      })
       .catch(error => {
         console.error('Erro ao obter valores da base de dados:', error);
-        return;
-        console.log
+        reject(error); // Rejeitando a promise em caso de erro
       });
-    }
+  });
+}
 
 // Quando os valores da base de dados são obtidos, cria o gráfico
 obterValoresDaBaseDeDados()
   .then(valores => {
     let labelsX = ["Cacifo1", "Cacifo2", "Cacifo3"];
-    
+
     new Chart(ctx, {
       type: 'bar',
       data: {
         labels: labelsX,
         datasets: [{
           label: 'Energia(W)',
-          data: valores,
+          data: dados,
           borderWidth: 1
         }]
       },
@@ -165,7 +180,11 @@ obterValoresDaBaseDeDados()
         }
       }
     });
+  })
+  .catch(error => {
+    console.error('Erro ao criar o gráfico:', error);
   });
+
 
 
     // // Incluir o Chart.js
