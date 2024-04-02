@@ -131,15 +131,16 @@
     const ctx = document.getElementById('grafico_energia');
 
   // Função para obter os valores da base de dados via AJAX
-function obterValoresDaBaseDeDados() {
-  return fetch('/dados-grafico') // Endpoint para obter os valores da base de dados
-    .then(res => res.json())
-    .then(data => data.valores)
-    .catch(error => {
-      console.error('Erro ao obter valores da base de dados:', error);
-      return [];
-    });
-}
+    function obterValoresDaBaseDeDados() {
+    return fetch('/dados-grafico') // Endpoint para obter os valores da base de dados
+      .then(res => res.json())
+      .then(data => data.valores)
+      .catch(error => {
+        console.error('Erro ao obter valores da base de dados:', error);
+        return;
+        console.log
+      });
+    }
 
 // Quando os valores da base de dados são obtidos, cria o gráfico
 obterValoresDaBaseDeDados()

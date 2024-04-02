@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
 const connection = require('./models/db'); // Arquivo de conexão MySQL
 app.set('view engine', 'ejs');
 app.use(express.json());
@@ -31,7 +32,6 @@ app.get('/dados-grafico', (req, res) => {
       // Mapeia os resultados para obter apenas os valores de Energia
       const valoresEnergia = results.map(result => result.Energia);
       res.json(valoresEnergia);
-      // console.log(valoresEnergia);
     });
   }
 });
