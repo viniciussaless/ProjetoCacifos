@@ -18,21 +18,22 @@
 <body class="fundo-pagina">
     <div class="container position-absolute">
         <div class="row justify-content-center">
-            <div class="col-xl-6 col-lg-6 col-md-8 col-sm-10"> <!-- Ajustei as colunas para dispositivos menores -->
+            <div class="col-xl-6 col-lg-6 col-md-8 col-sm-10">
+                <!-- Ajustei as colunas para dispositivos menores -->
                 <div class="card shadow-lg border-0" style="background-color: #EEEEEE;">
                     <div class="card-header" style="background-color: #31363F;">
                         <% if(model.message){ %>
                             <div>
-                                    <script>    
-                                        setTimeout(function teste() {
-                                            Swal.fire({
-                                                icon: "error",
-                                                title: "Oops...",
-                                                text: "<%= model.message %>",
-                                                heightAuto: false,
-                                            });
-                                        }, 100)
-                                    </script>
+                                <script>
+                                    setTimeout(function teste() {
+                                        Swal.fire({
+                                            icon: "error",
+                                            title: "Oops...",
+                                            text: "<%= model.message %>",
+                                            heightAuto: false,
+                                        });
+                                    }, 100)
+                                </script>
                             </div>
                             <% } %>
                                 <div class="text-center">
@@ -43,21 +44,18 @@
                     <form method="post" action="/login" autocomplete="on" id="form_login">
                         <div class="card-body d-flex flex-column justify-content-center">
                             <div class="form-group">
-                                <input class="form-control rounded-pill mb-3" type="text" name="email" id="email_user"
-                                    placeholder="Email" aria-describedby="helpId">
+                                <input class="form-control rounded-pill mb-3" type="text" name="email" id="email_user" placeholder="Email" aria-describedby="helpId">
                             </div>
 
                             <div class="form-group">
-                                <input class="form-control rounded-pill mb-3" type="password" name="password"
-                                    id="password" placeholder="Palavra-passe" aria-describedby="helpId">
+                                <input class="form-control rounded-pill mb-3" type="password" name="password" id="password" placeholder="Palavra-passe" aria-describedby="helpId">
                                 <button type="button" id="showpassword">
                                     <i class='bx bx-show' id="check"></i>
                                 </button>
                             </div>
 
                             <div class="text-center">
-                                <button id="enviar" type="submit" class="btn btn-lg rounded-pill w-50"
-                                    style="background-color: #31363F; color: white;">Login</button>
+                                <button id="enviar" type="submit" class="btn btn-lg rounded-pill w-50" style="background-color: #31363F; color: white;">Login</button>
                             </div>
 
                         </div>
@@ -74,21 +72,18 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-        </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-        </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-        </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
 
     <script>
         const campoSenha = document.getElementById('password');
         const botaoMostrarSenha = document.getElementById('showpassword');
 
-        botaoMostrarSenha.addEventListener('click', function () {
+        botaoMostrarSenha.addEventListener('click', function() {
             if (campoSenha.type === 'password') {
                 campoSenha.type = 'text';
             } else {
@@ -96,32 +91,30 @@
             }
         });
 
-        // document.getElementById('form_login').addEventListener('submit', function (Event) {
-        // Event.preventDefault();
+        document.getElementById('SignInButton').addEventListener('click', function() {
 
-        // const email_user = document.getElementById('email_user').value;
-        // const password = document.getElementById('password').value;
+            const email_utilizador = document.getElementById('email_utilizador').value;
+            const password_utilizadores = document.getElementById('password_utilizadores').value;
 
-        // fetch('/login', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify({
-        //         email: email_user,
-        //         password: password
-        //     })
-        // })
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         console.log('Success:', data);
-        //     })
-        //     .catch((error) => {
-        //         console.error('Error:', error);
-        //     });
+            fetch('/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: email_utilizador,
+                        password: password_utilizadores
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
 
-        // });
-
+        });
     </script>
 
 </body>
